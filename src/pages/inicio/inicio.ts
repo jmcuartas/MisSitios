@@ -24,8 +24,7 @@ export class Inicio {
     public navParams: NavParams,
     public platform: Platform,
     private geolocation: Geolocation,
-    public modalCtrl: ModalController,
-    public pdañCtrl: ModalController) {
+    public modalCtrl: ModalController) {
 
       platform.ready().then(() => {
         //la plataforma esta lista y ya tenemos acceso a los plugins

@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { Db } from '../providers/Db';
+import { SQLite } from '@ionic-native/sqlite';
 
 import { MyApp } from './app.component';
 import { MisTabs } from '../pages/mis-tabs/mis-tabs';
@@ -12,6 +14,7 @@ import { Inicio } from '../pages/inicio/inicio';
 import { Listado } from '../pages/listado/listado';
 import { Info } from '../pages/info/info';
 import { ModalNuevoSitio } from '../pages/modal-nuevo-sitio/modal-nuevo-sitio';
+import { ModalDetalleSitio } from '../pages/modal-detalle-sitio/modal-detalle-sitio';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { ModalNuevoSitio } from '../pages/modal-nuevo-sitio/modal-nuevo-sitio';
     Inicio,
     Listado,
     Info,
-    ModalNuevoSitio
+    ModalNuevoSitio,
+    ModalDetalleSitio
   ],
   imports: [
     BrowserModule,
@@ -33,12 +37,13 @@ import { ModalNuevoSitio } from '../pages/modal-nuevo-sitio/modal-nuevo-sitio';
     Inicio,
     Listado,
     Info,
-    ModalNuevoSitio
+    ModalNuevoSitio,
+    ModalDetalleSitio
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, Geolocation, Camera
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, Geolocation, Camera, Db, SQLite
   ]
 })
 export class AppModule {}

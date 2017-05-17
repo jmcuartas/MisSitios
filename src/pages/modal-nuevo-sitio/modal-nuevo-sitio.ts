@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Db } from '../../providers/Db';
 declare var google: any;
 
 /**
@@ -24,7 +25,8 @@ export class ModalNuevoSitio {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private viewCtrl : ViewController,
-              private camera: Camera) {
+              private camera: Camera,
+              private db: Db) {
   }
 
   ionViewDidLoad() {
@@ -76,6 +78,20 @@ export class ModalNuevoSitio {
     }, (err) => {
         console.log(err);
     });
-  }  
+  }
+
+  guardarSitio(){
+    let sitio = {
+      lat: this.coords.lat,
+      lng: this.coords.lng , 
+      address: this.address, 
+      description: this.description, 
+      foto: this.foto
+    }
+    this.db.addSitio(sitio).then((res)=>{
+      this.cerrarModal();
+     /*  alert('se ha introducido correctamente en la bd'); */
+    },(err)=>{ /* alert('error al meter en la bd'+err) */ }) 
+}  
 
 }
